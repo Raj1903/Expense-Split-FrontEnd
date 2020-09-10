@@ -1,0 +1,85 @@
+<app-navbar  [active]="'group'"></app-navbar>
+<br><br>
+<div class="container-fluid my-cg">
+    <div class="row justify-content-center">
+        
+            <div class="col-md-9">
+            <!-- card for form of creating new group -->
+            
+                <br>
+                <div class="card-header bg-dark"> 
+                    
+                    <h4 class="text" style="font-family: cursive; color: blanchedalmond; text-emphasis: position;">Create Your Group Here</h4>
+                </div>
+                <div class="card-body">
+                    <form #createForm="ngForm">
+                        <!-- form for group name --> 
+                        <div class="form-group">
+                            <h2 class="text"
+                            style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Name of
+                            Group *</h2>
+                            <label for="expense-group" class="sr-only" style="font-family: cursive; font-size: 30px; color: rgb(27, 17, 3); text-emphasis: position;">Group Name</label>
+                            <input id="expense-group" type="text" class="form-control" placeholder="Group Name"
+                                [(ngModel)]="group" name="group" required>
+
+                        </div>
+                        <!--</div>-->
+                        <!--End of form for group name-->
+                        
+                        
+                        <!-- end of group -->
+                           <!--Form for Date Selection-->
+                        <div class = "form-group">
+                            <h2 class="text"
+                            style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Date
+                             *</h2>
+                        <div class="row">
+                            <input id="dateOfExpense" name="date" [(ngModel)]="date"
+                            type = "date" bsDatepicker class = "form-control">
+                        </div> 
+                        </div>
+                        <br>
+                        <!-- dropdown to select member -->
+                        <div class="dropdown" aria-describedby="dropdown-help">
+                            <h2 class="text"
+                            style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Add Payer *</h2>
+                            
+                            <button class="btn dropdown-toggle btn-outline-secondary" type="button"
+                                data-toggle="dropdown" id="members-dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                {{dropdownSelected}}
+                            </button>
+                            <br>
+                            <br>
+                            <div aria-labelledby="members-dropdown" class="dropdown-menu" class="form-control">
+                                <a type="button" class="dropdown-item style-dropdown"
+                                    *ngFor="let user of allUsersIncludingMe" (click)="selectedUser(user)">
+                                    {{user.firstName }} {{ user.lastName}}
+
+                                </a>
+                            </div>
+                        </div>
+                        <small id="dropdown-help" class="text-muted">Group Member will get notified soon</small>
+                        <!-- end of dropdown -->
+                    </form>
+                </div>
+
+                <!-- card-footer -->
+                <div class="card-footer">
+                    <div class="row justify-content-between">
+                        
+                        <button type = "button" class="btn btn-outline-success btn-block" (Onclick)="createGroup()" [disabled]="!createForm.valid||!group||!date">Submit</button>
+                        <button type="button" class="btn btn-outline-danger btn-block" (click)="navigateBack()">Back</button>
+                    </div>
+
+                    <!--end of card footer-->
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+</div>
+<footer class="footer">
+    <div class="container text-center">
+        <span class="text-muted">&copy; All Right Reserved By God</span>
+    </div>
+</footer>

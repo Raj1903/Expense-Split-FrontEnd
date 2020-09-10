@@ -1,0 +1,54 @@
+<div *ngIf="expenses">
+    <div class=" table-responsive-sm"  id="mytable">
+            <table class="table table-bordered table-hover table-dark ">
+                    <caption>{{caption}}</caption>
+                    <thead>
+                        <tr>
+                            <th (click)="sortOnTitle()" colspan="2" scope="col">Title</th>
+                            <th (click)="sortOnStatus()" scope="col">Status</th>
+                            <th (click)="sortOnReporter()" scope="col">Reporter</th>
+                            <th (click)="sortOnDate()" scope="col">Date</th>
+
+                            <!--<th (click) = "sortOnGroup()" colspan="3" scope="col">GroupAdmin</th>-->
+                            <!--<th (click) = "sortOnDate()" colspan="3" scope="col">Date</th>
+                            <th (clicl) = "sortOnTtile()" colspan="3" scope="col">Title</th>
+                            <th (click) = "sortOnMember()" colspan="3" scope="col">Member</th>-->
+
+
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        <tr *ngFor="let expense of expenses" (click)="navigateToexpenseDetail(expense.expenseId)">
+                            <!--<td colspan="3">{{expense.title}}</td>-->
+                            <!--<td colspan="3">{[group.group}}</td>-->
+                            <!--<td>{[expense.members.memberName}}</td>-->
+                            <!--<td>{{expense.amount}}</td>-->
+                            <!--<td>{{expense.createdOn | date}}</td>-->
+                            <td colspan="2">{{expense.title}}</td>
+                            <td>{{expense.status}}</td>
+                            <td>{{expense.reporter.reporterName}}</td>
+                            <td>{{expense.createdOn | date}}</td>
+
+                            
+                            
+                        </tr>
+            
+                    </tbody>
+            
+            
+                </table>
+    </div>
+    
+    <div *ngIf="isPaginated" class="row justify-content-center text-white">
+        <div class="btn-group">
+            <a class="btn btn-secondary" (click)="previousPage()">prev</a>
+            <a class="btn btn-secondary" (click)="nextPage()">next</a>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="!expenses">
+    <h4 class="text-danger">No expenses Split Found</h4>
+</div>

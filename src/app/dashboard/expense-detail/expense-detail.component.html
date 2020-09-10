@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row ">
+        <!-- column-1 -->
+        <div class="col-md-6">
+            <h3 class="text-info text-center">expense Detail</h3>
+            <div *ngIf="expenseDetail" class="border p-1 bg-secondary rounded text-white">
+                <div class="row no-gutters ml-md-5 text-justify">
+                    <cite class="font-weight-light">Group : </cite>
+                    <p class="ml-1">{{expenseDetail?.group}}</p>
+                </div>
+                <div class="row no-gutters ml-md-5 text-justify">
+                    <cite class="font-weight-light">Date : </cite>
+                    <p class="ml-1" [innerHtml]="expenseDetail.date" class="text-justify"></p>
+                </div>
+                <div class="row no-gutters ml-md-5 text-justify">
+
+                    <select class="rounded bg-secondary text-white">
+                        <option selected disabled>Members</option>
+                        <option *ngFor="let member of members" class="bg-white" disabled>{{member.membersName}}
+                        </option>
+                    </select>
+
+                </div>
+                
+                <div class="row no-gutters justify-content-between">
+                    <button class="btn btn-dark text-white" (click)="navigateBack()">Back</button>
+                    <button class="btn btn-primary text-white"
+                        [routerLink]="['/group',groupDetail.groupId,'create']">Create Expense Detail</button>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- end of column-1 -->
+
+        
+
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<app-navbar [active]="'expenses'"></app-navbar>
+<br>
+<div class="container-fluid my-cg">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <!--<div class="card p-2">-->
+            <br><br>
+            <div class="card-header bg-dark">
+                <h3 class="text-white" style="font-family: cursive; color: blanchedalmond;  text-emphasis: position;">
+                    Create Your Expense</h3>
+            </div>
+            <br>
+            <br>
+
+            <div class="card-body">
+                <form>
+                    <!-- form for Expense Title -->
+
+                    <div class="form-group">
+                        <h2 class="text"
+                            style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Name of
+                            Expense *</h2>
+                        <div class="row">
+                            <label for="expense-title" class="sr-only"
+                                style="font-family: cursive; font-size: 30px; color: rgb(27, 17, 3); text-emphasis: position;">Expense
+                                Title</label>
+                            <input id="expense-title" type="text" class="form-control" placeholder="Name Of Expense"
+                                [(ngModel)]="title" name="title">
+                        </div>
+                    </div>
+
+
+
+                    
+
+                    <!-- end of title -->
+
+                    <div class="form-group">
+                        <div class="row">
+                            <h2 class="text"
+                                style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Date of
+                                Expense *</h2>
+                            <label for="dateOfExpense" class="sr-only"
+                                style="font-family: cursive; font-size: 30px; color: rgb(27, 17, 3); text-emphasis: position;">Date
+                                of Creation</label>
+                            <input id="dateOfExpense" name="date" [(ngModel)]="date" placeholder="Date Of Expense"
+                                type="date" bsDatepicker class="form-control">
+                        </div>
+                    </div>
+                    <!--Amount adding start-->
+                    <hr>
+
+                    <div class="form-group">
+                        <h2 class="text"
+                            style="font-size: 20px; font-style: italic;  font: outline; color: whitesmoke;">Total Amount
+                            *</h2>
+                        <div class="row">
+                            <label for="amount" class="sr-only"
+                                style="font-family: cursive; font-size: 30px; color: rgb(27, 17, 3); text-emphasis: position;">Amount</label>
+                            <input id="amount" type="text" class="form-control" placeholder="Amount"
+                                [(ngModel)]="amount" name="amount">
+                        </div>
+                    </div>
+
+                    <!--End of amount adding-->
+
+
+
+                    <!-- dropdown for making group -->
+                    <div class="dropdown" aria-describedby="dropdown-help">
+                        <div class="row">
+                            <button class="btn dropdown-toggle btn-outline-secondary" type="button"
+                                data-toggle="dropdown" id="members-dropdown" aria-haspopup="true" aria-expanded="false" >
+                                {{dropdownSelected}}
+                            </button>
+                            <div aria-labelledby="members-dropdown" class="dropdown-menu">
+                                <a type="button" class="dropdown-item style-dropdown" *ngFor="let user of allUsers"
+                                    (click)="selectedUser(user)">
+                                    {{user.firstName}} {{user.lastName}}
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- end of dropdown -->
+                    <!--who paid the amount-->
+                    <div class="dropdown" aria-describedby="dropdown-help">
+                        <div class="row">
+                            <button class="btn dropdown-toggle btn-outline-secondary" type="button"
+                                data-toggle="dropdown" id="members-dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{dropdownWhoPaid}}
+                            </button>
+                            <div aria-labelledby="members-dropdown" class="dropdown-menu">
+                                <a type="button" class="dropdown-item style-dropdown" *ngFor="let member of allMember" 
+                                    (click)="selectedUser(member)">
+                                    {{user.firstName}} 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- card-footer -->
+            <div class="card-footer">
+                <div class="row justify-content-between">
+
+                    <button class="btn btn-outline-success btn-block" (click)="createExpense()" >Create Group</button>
+                    <button class="btn btn-outline-danger btn-block" (click)="navigateBack()">Back</button>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</div>
