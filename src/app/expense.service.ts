@@ -71,11 +71,6 @@ public getAllexpenses(authToken, skip) {
 
 
 
-//get all expenses reported by user
-/*
-public expensesReportedByUser(userId, authToken, skip) {
-  return this.http.get(`${this.baseUrl}/${userId}/reported/expenses?authToken=${authToken}&skip=${skip}`);
-}*/
 
 //get expense detail by expenseid
 public getexpenseDetail(expenseId, authToken) {
@@ -85,45 +80,8 @@ public getexpenseDetail(expenseId, authToken) {
 public getgroupDetail(groupId, authToken){
   return this.http.get(`${this.baseUrl}/${groupId}/view/all/expenses?authToken=${authToken}`)
 }
-/*
-//adding comments on expense
-public addComment(data) {
-  const params = new HttpParams()
-    .set('authToken', data.authToken)
-    .set('userId', data.userId)
-    .set('firstName', data.firstName)
-    .set('comment', data.comment)
-    .set('expenseId', data.expenseId)
 
-  return this.http.post(`${this.baseUrl}/comment/create`, params)
-}
-*/
-//updating expense
-/*  public updateexpense(data) {
-  if (data.assigneeId && data.assigneeName) {
-    const params = new HttpParams()
-      .set('title', data.title)
-      .set('description', data.description)
-      .set('status', data.status)
-      .set('assigneeId', data.assigneeId)
-      .set('assigneeName', data.assigneeName)
-      .set('authToken', data.authToken)
 
-      return this.http.put(`${this.baseUrl}/${data.expenseId}/edit`,params)
-  }
-  else
-  {
-    const params = new HttpParams()
-      .set('title', data.title)
-      .set('description', data.description)
-      .set('status', data.status)
-      .set('authToken', data.authToken)
-
-      return this.http.put(`${this.baseUrl}/${data.expenseId}/edit`,params)
-  }
-
-}//end of updating expense
-*/
 public updateExpense(data){
   if (data.groupId){
     //console.log('!data.groupId)
@@ -150,18 +108,7 @@ public updateExpense(data){
   } 
 } //end of creating group
 
-//adding as watcher
-/*
-public addWatcher(data)
-{
-  const params = new HttpParams()
-  .set('authToken',data.authToken)
-  .set('watcherId',data.watcherId)
-  .set('watcherName',data.watcherName)
 
-  return this.http.put(`${this.baseUrl}/${data.expenseId}/add/watcher`,params);
-}
-*/
 //search for expense
 public searchexpense(authToken,searchText)
 {
