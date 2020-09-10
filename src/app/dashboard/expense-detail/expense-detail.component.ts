@@ -48,16 +48,11 @@ export class ExpenseDetailComponent implements OnInit {
             //console.log(apiresponse)
             this.expenseDetail = apiresponse['data'];
             if (apiresponse['data']['comments'].length > 0) {
-              //this.comments = apiresponse['data']['comments'];
-              //this.comments = this.comments.reverse();
+              
 
             }
 
-            //this.assignee = apiresponse['data']['assignee'];
-            //this.watchers = apiresponse['data']['watchers'];
-            //console.log(this.watchers)
-            //console.log(this.comments)
-            //this.addWatchingStatus();
+            
             this.members = apiresponse['data']['members']
           }
         },
@@ -70,59 +65,7 @@ export class ExpenseDetailComponent implements OnInit {
     }
   }
 
-  //add watching status
- /* public addWatchingStatus() {
-    //if current expense reporter is the user itself then dont do anything if not then set status
-    //on the basis of watcherlist
-    if (this.userDetail.userId != this.expenseDetail.reporter.reporterId) {
-      if (this.expenseDetail.watchers.length > 0) {
-        this.expenseDetail.watchers.forEach((watcher) => {
-          if (watcher.watcherId === this.userDetail.userId) {
-            this.expenseDetail.watchingStatus = 'watching'
-          }
-          else {
-            this.expenseDetail.watchingStatus = 'watch';
-          }
-        })
-      }
-      else {
-        this.expenseDetail.watchingStatus = "watch";
-        //console.log(this.expenseDetail)
-      }
 
-    }
-  }
-
-  //watching the current expense
-  public watchexpense() {
-    let data =
-    {
-      expenseId: this.expenseDetail.expenseId,
-      watcherId: this.userDetail.userId,
-      watcherName: this.userDetail.firstName,
-      authToken: this.userDetail.authToken
-    }
-
-    this.expenseService.addWatcher(data).subscribe(
-      (apiresponse) => {
-        if (apiresponse['status'] === 200) {
-          //console.log('status 200 : ',apiresponse);
-          this.expenseDetail.watchingStatus = 'watching';
-          this.watchers.push(apiresponse['data']);
-          this.notifyUpdates();
-        }
-        else {
-          this.toastr.error(apiresponse['message']);
-        }
-      },
-      (error) => {
-        setTimeout(() => {
-          this.router.navigate(['/server/error'])
-        }, 2000);
-      }
-    )
-  }
-*/
   //notifying updates about adding in expense group
   public notifyUpdates() {
     let data =
